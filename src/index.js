@@ -48,6 +48,7 @@ addtoyform.addEventListener("submit", function(e){
   })
   .then(resp=>resp.json())
   .then(toy=>fetchToy(toy))
+  e.target.reset()
 })
 
 document.addEventListener("click",function(e){
@@ -95,7 +96,6 @@ function fetchToy(toy){
   //this class need to call it outise the innerHTML or not undefined patch id
   //and not going to safe it to the database
   newToy.class="card"
-
 
   newToy.innerHTML=`
   <h2>${toy.name}</h2>
