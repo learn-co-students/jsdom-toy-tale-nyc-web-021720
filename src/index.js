@@ -43,17 +43,19 @@ function renderToy(toy) {
 	toyCollection.appendChild(divCard);
 }
 function postToy(toy_data) {
+	let body = {
+		name: toy_data.name.value,
+		image: toy_data.image.value,
+		likes: 0,
+	};
+	console.log(body);
 	return fetch(BASE_URL, {
 		method: "POST",
 		headers: {
-			"Type-Content": "application/json",
+			"Content-Type": "application/json",
 			Accept: "application/json",
 		},
-		body: JSON.stringify({
-			name: toy_data.name.value,
-			image: toy_data.image.value,
-			likes: 0,
-		}),
+		body: JSON.stringify(body),
 	})
 		.then((res) => res.json())
 		.then((obj_toy) => {
